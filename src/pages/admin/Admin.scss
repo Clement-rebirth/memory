@@ -1,0 +1,37 @@
+.admin {
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+
+    .image-container {
+      width: 200px;
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+
+      button {
+        background: #fff;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: none;
+        padding: 6px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+
+        &:hover {
+          transition-duration: 0.1s;
+          transform: scale(1.1);
+          color: rgb(255, 78, 78);
+        }
+      }
+    }
+  }
+}

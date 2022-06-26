@@ -12,7 +12,7 @@ const Admin = () => {
 
   const [imageName, setImageName] = useState(false);
   const [previewImageSrc, setPreviewImageSrc] = useState(false);
-  const [imagesSrc, setImagesSrc] = useState({});
+  const [imagesSrc, setImagesSrc] = useState(false);
 
   let fileInputRef = useRef(null);
   let { user, setUser } = useContext(UserContext);
@@ -22,7 +22,7 @@ const Admin = () => {
 
     imagesManager.getAll(snapshot => {
       let data = snapshot.val();
-      setImagesSrc(data);
+      setImagesSrc(data ? data : false);
     });
   }, []);
 
@@ -122,7 +122,7 @@ const Admin = () => {
       <h2>Liste des images</h2>
 
       <div className='images'>
-        { Object.keys(imagesSrc).length === 0 &&
+        { imagesSrc === false &&
           <p className='no-images'>Vous n'avez pas d'image</p>
         }
         { Object.keys(imagesSrc).length > 0 && 

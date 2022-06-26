@@ -4,6 +4,8 @@ import { UserContext } from '../../providers/UserProvider';
 
 import { Navigate, useNavigate } from 'react-router-dom';
 
+import './Login.scss';
+
 const Login = () => {
 
   const [loginFormData, setLoginFormData] = useState({

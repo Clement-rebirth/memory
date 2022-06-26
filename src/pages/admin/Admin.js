@@ -85,6 +85,7 @@ const Admin = () => {
 
         setImageName(false);
         setPreviewImageSrc(false);
+        fileInputRef.current.value = '';
       })
       .catch(error => {
         console.error(error);
@@ -95,7 +96,7 @@ const Admin = () => {
   if (user === false) return <Navigate to='/login' />;
 
   return (
-    <div className='admin'>
+    <div className='admin container'>
       <header>
         <h1>Admin</h1>
         <button className='sign-out' onClick={handleSignOut}>Déconnexion</button>
@@ -115,8 +116,10 @@ const Admin = () => {
           </div>
         }
         
-        <button className='btn-primary'>Ajouter une image</button>
+        <button>Ajouter une image</button>
       </form>
+          
+      <h2>Liste des images</h2>
 
       <div className='images'>
         { Object.keys(imagesSrc).length === 0 &&

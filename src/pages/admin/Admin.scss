@@ -1,10 +1,40 @@
 .admin {
+
+  header {
+    display: flex;
+    align-items: center;
+
+    .sign-out {
+      margin-left: 12px;
+      background-color: #2C3E50;
+      color: #fff;
+      border-radius: 8px;
+      padding: 5px 10px;
+      border: none;
+    }
+  }
+
+  form {
+    .image-preview {
+      margin-top: 10px;
+
+      img {
+        width: 200px;
+      }
+    }
+
+    button {
+      width: auto;
+    }
+  }
+
   .images {
     display: flex;
     flex-wrap: wrap;
 
     .image-container {
       width: 200px;
+      margin: 0 4px;
       position: relative;
 
       img {

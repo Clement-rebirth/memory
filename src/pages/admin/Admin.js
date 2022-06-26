@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { deleteObject, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { UserContext } from '../../providers/UserProvider';
 import { getAuth, signOut } from 'firebase/auth';
 import Manager from '../../services/firebase/Manager';
@@ -25,6 +25,22 @@ const Admin = () => {
       setImagesSrc(data);
     });
   }, []);
+
+  const deleteImage = (id, imageName) => {
+    if (!window.confirm('Supprimer l\'image ?')) return;
+
+    // delete image from firebase storage
+    const storage = getStorage();
+    const imageRef = ref(storage, `memory-images/${imageName}`);
+
+    deleteObject(imageRef)
+      .then(() => {
+        // delete image from the db
+        let imageManager = new Manager(`images/${id}`);
+        imageManager.delete(() => alert(`L'image a bien été supprimée`));
+      })
+      .catch(error => console.error(error));
+  };
 
   const handleSignOut = () => {
     const auth = getAuth();
@@ -110,7 +126,7 @@ const Admin = () => {
           Object.keys(imagesSrc).map(key => (
             <div key={key} className='image-container'>
               <img src={`https://firebasestorage.googleapis.com/v0/b/memory-7dc6f.appspot.com/o/memory-images%2F${imagesSrc[key].imageName}?alt=media`} alt={imagesSrc[key].imageName} />
-              <button><span className='material-symbols-rounded'>delete</span></button>
+              <button onClick={() => deleteImage(key, imagesSrc[key].imageName)}><span className='material-symbols-rounded'>delete</span></button>
             </div>
         ))}
       </div>

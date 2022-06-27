@@ -4,12 +4,16 @@ html, body, #root {
 
 body {
   margin: 0;
-  background-color: #F7F7F7;
+  background-color: #eee;
   font-family: 'Nunito', sans-serif;
 }
 
 p, a, label, input, button, div, small, textarea, input, select {
   font-family: 'Nunito', sans-serif;
+}
+
+p {
+  font-size: 1.1rem;
 }
 
 h2, h3, h4, h5, h6 {

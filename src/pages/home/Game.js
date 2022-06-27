@@ -2,7 +2,7 @@ import React from 'react';
 
 import Card from './Card';
 
-const Game = ({ timer, difficulty, gameImages, selectCard, firstCard, secondCard, correctCardsId, getTime, moves }) => {
+const Game = ({ timer, difficulty, cards, selectCard, firstCard, secondCard, correctCardsId, getTime, moves }) => {
 
   return (
     <div className='game'>
@@ -11,7 +11,7 @@ const Game = ({ timer, difficulty, gameImages, selectCard, firstCard, secondCard
         <span>{ moves } moves</span>
       </div>
       <div className={`cards ${difficulty}`}>
-        { gameImages.map((image) => (
+        { cards.map((image) => (
           <Card
             key={image.id}
             card={image}

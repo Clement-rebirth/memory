@@ -15,7 +15,7 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [difficulty, setDifficulty] = useState('');
   const [images, setImages] = useState(false);
-  const [gameImages, setGameImages] = useState(false);
+  const [cards, setCards] = useState(false);
   const [win, setWin] = useState(false);
   const [timer, setTimer] = useState(0);
   const [firstCard, setFirstCard] = useState(false);
@@ -43,27 +43,27 @@ function App() {
     setDifficulty(difficulty);
     startTimer();
 
-    let nbOfImages;
+    let nbOfCards;
 
     switch (difficulty) {
       case 'casual':
-        nbOfImages = 8;
+        nbOfCards = 8;
         break;
       case 'medium':
-        nbOfImages = 12;
+        nbOfCards = 12;
         break;
       case 'hard':
-        nbOfImages = 16;
+        nbOfCards = 16;
         break;
     }
 
-    let gameImages = images.slice(0, nbOfImages);
+    let cards = images.slice(0, nbOfCards);
 
-    gameImages = [...gameImages, ...gameImages]; // to have every card twice
-    gameImages = gameImages.map((image, index) => ({ id: index, url: image.url })); // to have a unique id for every image
-    gameImages = shuffle(gameImages);
+    cards = [...cards, ...cards]; // to have every card twice
+    cards = cards.map((image, index) => ({ id: index, url: image.url })); // to have a unique id for every card
+    cards = shuffle(cards);
 
-    setGameImages(gameImages);
+    setCards(cards);
   };
 
   const selectCard = (card) => {
@@ -105,7 +105,7 @@ function App() {
 
   useEffect(() => {
     // if win
-    if (correctCardsId.length === gameImages.length) {
+    if (correctCardsId.length === cards.length) {
       setWin(true);
       clearInterval(intervalId);
     }
@@ -137,11 +137,11 @@ function App() {
 
       { !gameStart && <DifficultyOverlay start={start} /> }
 
-      { gameImages &&
+      { cards &&
         <Game
           timer={timer}
           difficulty={difficulty}
-          gameImages={gameImages}
+          cards={cards}
           selectCard={selectCard}
           firstCard={firstCard}
           secondCard={secondCard}

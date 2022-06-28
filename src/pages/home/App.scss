@@ -115,6 +115,8 @@
 
     p {
       font-size: 2rem;
+      margin: 20px 15px;
+      text-align: center;
     }
 
     b {
@@ -129,6 +131,88 @@
       text-decoration: none;
       border-radius: 16px;
       width: auto;
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .app .game .cards {
+    padding: 25px;
+    gap: 20px;
+
+    .card-container {
+      height: 90px;
+      width: 90px;
+    }
+  }
+}
+
+@media all and (max-width: 750px) {
+  .app {
+    h1 {
+      font-size: 2.4rem;
+    }
+
+    .game .cards {
+      padding: 15px;
+      gap: 12px;
+      border-radius: 12px;
+
+      .card-container {
+        height: 60px;
+        width: 60px;
+      }
+
+      .card {
+        div {
+          border-radius: 12px;
+        }
+
+        .back img {
+          padding: 8px;
+        }
+      }
+    }
+
+    .win {
+      p {
+        font-size: 1.7rem;
+      }
+
+      button {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 425px) {
+  .app {
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .game {
+      .cards {
+        &.medium {
+          grid-template: 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+        }
+  
+        &.hard {
+          grid-template: repeat(8, 1fr) / repeat(4, 1fr);
+        }
+      }
+    }
+
+    .win {
+      p {
+        font-size: 1.4rem;
+      }
+
+      button {
+        font-size: 1.4rem;
+      }
     }
   }
 }
